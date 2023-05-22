@@ -62,6 +62,7 @@
 | Column       | Type    | Options                        |
 | ------------ | ------- | ------------------------------ |
 | user_id      | integer | null: false,foreign_key: true  |
+| building_name| string  |                                |
 | address_line | string  | null: false                    |
 | city         | string  | null: false                    |
 | prefecture   | string  | null: false                    |
