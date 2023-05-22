@@ -14,6 +14,7 @@
 # Association
 
  - has_many :items
+ - has_many :purchases
 
 
 
@@ -22,7 +23,7 @@
 | Column             | Type       | Options                       |
 | ------------------ | ---------- | ----------------------------- |
 | item_name          | string     | null: false                   |
-| category           | string     | null: false                   |
+| category_id        | integer    | null: false,foreign_key: true |
 | description        | text       | null: false                   |
 | condition_id       | integer    | null: false                   |
 | shipping_cost_id   | integer    | null: false                   |
@@ -33,8 +34,8 @@
 
 # Association
 
- - belongs_to :user
- - has_one :purchase
+ - belongs_to :users
+ - has_one :purchases
 
 
 
@@ -43,7 +44,7 @@
 | Column         | Type     | Options                       |
 | -------------- | -------- | ----------------------------- |
 | item_id        | integer  | null: false,foreign_key: true |
-| buyer_name     | string   | null: false                   |
+| user_id        | integer  | null: false,foreign_key: true |
 | purchase_date  | integer  | null: false                   |
 | purchase_price | integer  | null: false                   |
 | shipping_fee   | integer  | null: false                   |
@@ -53,7 +54,7 @@
 # Association
 
  - belongs_to :items
- - has_one :purchase_information
+ - has_one :purchase_informations
 
 
 
@@ -61,7 +62,7 @@
 
 | Column       | Type    | Options                        |
 | ------------ | ------- | ------------------------------ |
-| user_id      | integer | null: false,foreign_key: true  |
+| purchase_id  | integer | null: false,foreign_key: true  |
 | building_name| string  |                                |
 | address_line | string  | null: false                    |
 | city         | string  | null: false                    |
@@ -70,4 +71,4 @@
 | telephone    | integer | null: false                    |
 
 
-belongs_to :purchase
+belongs_to :purchases
