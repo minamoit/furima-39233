@@ -56,7 +56,7 @@ RSpec.describe User, type: :model do
         it 'passwordが全角だと登録できない' do
           @user.password = 'ああああああ'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+          expect(@user.errors.full_messages).to include("Password confirmation is invalid")
         end
         it 'passwordとconfirmが一致していないと登録できない' do
           @user.password = 'test12'
