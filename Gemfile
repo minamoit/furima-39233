@@ -34,6 +34,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'faker-japanese'
 end
 
 group :development do
@@ -65,3 +66,4 @@ gem 'devise'
 
 gem 'pry'
 
+gem 'gimei'
