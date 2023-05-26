@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
-    context '新規登録できる場合' do
       context '新規登録できるとき' do
         before do
           @user.first_name = 'あああ'
@@ -20,17 +19,7 @@ RSpec.describe User, type: :model do
         it '正常に登録できる' do
           expect(@user).to be_valid
         end
-        it 'passwordとpassword_confirmationが6文字以上であれば登録できる' do
-          expect(@user).to be_valid
-        end
-        it 'first_nameとlast_nameが全角であれば登録できる' do
-          expect(@user).to be_valid
-        end
-        it 'first_name_kanaとlast_name_kanaが全角であれば登録できる' do
-          expect(@user).to be_valid
-        end
       end
-  
       context '新規登録出来ない時' do
         it "nicknameが空では登録できない" do
           @user.nickname = ''
@@ -82,7 +71,7 @@ RSpec.describe User, type: :model do
         end
         it '重複したemailが存在する場合登録できない' do
           @user.save
-          another_user = FactoryBot.build(:user)
+          another_user = FactoryBot.build(:user, email: 'another@example.com')
           another_user.email = @user.email
           another_user.valid?
           expect(another_user.errors.full_messages).to include('Email has already been taken')
@@ -148,6 +137,5 @@ RSpec.describe User, type: :model do
           expect(@user.errors.full_messages).to include("Birth day can't be blank")
         end
       end
-    end
   end
 end
