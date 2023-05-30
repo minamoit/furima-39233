@@ -8,8 +8,10 @@ class Item < ApplicationRecord
 
   validates :images, presence: { message: "can't be blank" }
 
-  validates :item_name, presence: { message: "can't be blank" }
-  validates :description, presence: { message: "can't be blank" }
+  validates :item_name, presence: { message: "can't be blank" },
+                        length: { maximum: 40 }
+  validates :description, presence: { message: "can't be blank" },
+                          length: { maximum: 1000 }
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" } 
   validates :condition_id, numericality: { other_than: 1, message: "can't be blank" } 
   validates :shipping_cost_id, numericality: { other_than: 1, message: "can't be blank" } 
