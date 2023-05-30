@@ -63,7 +63,10 @@ group :production do
 end
 
 gem 'devise'
-
 gem 'pry'
-
 gem 'gimei'
+gem 'active_hash'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
+
+gem 'jp_prefecture'

@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :birth_day, presence: { message: "can\'t be blank" }
 
   #出品機能時に実装
-  #has_many :items
+  has_many :items
   #has_many :purchases
 
   # Include default devise modules. Others available are:
