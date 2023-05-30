@@ -82,6 +82,16 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors[:description]).to include("is too long (maximum is 1000 characters)")
       end
+      it "userが紐付いていなければ出品できない" do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors[:user]).to include("must exist")
+      end
+      it "「---」が選択されていると出品できない" do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors[:category_id]).to include("can't be blank")
+      end
     end
   end
 end

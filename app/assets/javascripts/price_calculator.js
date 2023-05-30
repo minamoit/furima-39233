@@ -21,7 +21,7 @@ function calculateProfit() {
   const price = parseInt(priceInput.value, 10);
 
   // 販売手数料を計算 (価格の10%)
-  const taxPrice = Math.round(price * 0.1);
+  const taxPrice = Math.floor(price * 0.1);
 
   // 販売利益を計算 (価格から販売手数料を引いた値)
   const profit = price - taxPrice;
