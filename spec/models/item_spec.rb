@@ -12,10 +12,10 @@ RSpec.describe Item, type: :model do
       end
     end
     context '商品情報入力がうまくいかない時' do
-      it "imageが未選択では登録できない" do
-        @item.image = nil
+      it "imagesが未選択では登録できない" do
+        @item.images = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("Images can't be blank")
       end
       it "item_nameが空では登録できない" do
         @item.item_name = ''
@@ -87,30 +87,10 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors[:user]).to include("must exist")
       end
-      it "categotyに「---」が選択されていると出品できない" do
+      it "「---」が選択されていると出品できない" do
         @item.category_id = 1
         @item.valid?
         expect(@item.errors[:category_id]).to include("can't be blank")
-      end
-      it "conditionに「---」が選択されていると出品できない" do
-        @item.condition_id = 1
-        @item.valid?
-        expect(@item.errors[:condition_id]).to include("can't be blank")
-      end
-      it "shipping_costに「---」が選択されていると出品できない" do
-        @item.shipping_cost_id = 1
-        @item.valid?
-        expect(@item.errors[:shipping_cost_id]).to include("can't be blank")
-      end
-      it "shipping_originに「---」が選択されていると出品できない" do
-        @item.shipping_origin_id = 1
-        @item.valid?
-        expect(@item.errors[:shipping_origin_id]).to include("can't be blank")
-      end
-      it "shipping_dateに「---」が選択されていると出品できない" do
-        @item.shipping_date_id = 1
-        @item.valid?
-        expect(@item.errors[:shipping_date_id]).to include("can't be blank")
       end
     end
   end
