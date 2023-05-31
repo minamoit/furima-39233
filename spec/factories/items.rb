@@ -5,9 +5,9 @@ FactoryBot.define do
     category_id           { 2 }
     condition_id          { 2 }
     shipping_cost_id      { 2 }
-    shipping_origin_id         { 2 }
-    shipping_date_id      { 2 }
-    price           { 50000 }
+    shipping_origin_id { 2 }
+    shipping_date_id { 2 }
+    price { 50_000 }
 
     association :user
 

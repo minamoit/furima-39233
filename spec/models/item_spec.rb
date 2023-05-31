@@ -12,102 +12,102 @@ RSpec.describe Item, type: :model do
       end
     end
     context '商品情報入力がうまくいかない時' do
-      it "imageが未選択では登録できない" do
+      it 'imageが未選択では登録できない' do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
-      it "item_nameが空では登録できない" do
+      it 'item_nameが空では登録できない' do
         @item.item_name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Item name can't be blank")
       end
-      it "descriptionが空では登録できない" do
+      it 'descriptionが空では登録できない' do
         @item.description = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
-      it "categoryが未選択では登録できない" do
+      it 'categoryが未選択では登録できない' do
         @item.category_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      it "conditionが未選択では登録できない" do
+      it 'conditionが未選択では登録できない' do
         @item.condition_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
-      it "shipping_costが未選択では登録できない" do
+      it 'shipping_costが未選択では登録できない' do
         @item.shipping_cost_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping cost can't be blank")
       end
-      it "shipping_originが未選択では登録できない" do
+      it 'shipping_originが未選択では登録できない' do
         @item.shipping_origin_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping origin can't be blank")
       end
-      it "shipping_dateが未選択では登録できない" do
+      it 'shipping_dateが未選択では登録できない' do
         @item.shipping_date_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping date can't be blank")
       end
-      it "priceが空では登録できない" do
+      it 'priceが空では登録できない' do
         @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが全角数字だと出品できない' do
-        @item.price = "２０００"
+        @item.price = '２０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
-      it "priceは300~9,999,999以外は登録できない" do
+      it 'priceは300~9,999,999以外は登録できない' do
         @item.price = '200'
         @item.valid?
-        expect(@item.errors[:price]).to include("is out of setting range")
+        expect(@item.errors[:price]).to include('is out of setting range')
 
         @item.price = '10,000,000'
         @item.valid?
-        expect(@item.errors[:price]).to include("is out of setting range")
+        expect(@item.errors[:price]).to include('is out of setting range')
       end
 
-      it "item_nameは40字以上は登録できない" do
-        @item = Item.new(item_name: "This is a very long item name that exceeds the maximum limit of 40 characters")
+      it 'item_nameは40字以上は登録できない' do
+        @item = Item.new(item_name: 'This is a very long item name that exceeds the maximum limit of 40 characters')
         expect(@item).to be_invalid
-        expect(@item.errors[:item_name]).to include("is too long (maximum is 40 characters)")
+        expect(@item.errors[:item_name]).to include('is too long (maximum is 40 characters)')
       end
-      it "descriptionが1001文字だと登録できない" do
-        @item.description = "a" * 1001
+      it 'descriptionが1001文字だと登録できない' do
+        @item.description = 'a' * 1001
         @item.valid?
-        expect(@item.errors[:description]).to include("is too long (maximum is 1000 characters)")
+        expect(@item.errors[:description]).to include('is too long (maximum is 1000 characters)')
       end
-      it "userが紐付いていなければ出品できない" do
+      it 'userが紐付いていなければ出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors[:user]).to include("must exist")
+        expect(@item.errors[:user]).to include('must exist')
       end
-      it "categotyに「---」が選択されていると出品できない" do
+      it 'categotyに「---」が選択されていると出品できない' do
         @item.category_id = 1
         @item.valid?
         expect(@item.errors[:category_id]).to include("can't be blank")
       end
-      it "conditionに「---」が選択されていると出品できない" do
+      it 'conditionに「---」が選択されていると出品できない' do
         @item.condition_id = 1
         @item.valid?
         expect(@item.errors[:condition_id]).to include("can't be blank")
       end
-      it "shipping_costに「---」が選択されていると出品できない" do
+      it 'shipping_costに「---」が選択されていると出品できない' do
         @item.shipping_cost_id = 1
         @item.valid?
         expect(@item.errors[:shipping_cost_id]).to include("can't be blank")
       end
-      it "shipping_originに「---」が選択されていると出品できない" do
+      it 'shipping_originに「---」が選択されていると出品できない' do
         @item.shipping_origin_id = 1
         @item.valid?
         expect(@item.errors[:shipping_origin_id]).to include("can't be blank")
       end
-      it "shipping_dateに「---」が選択されていると出品できない" do
+      it 'shipping_dateに「---」が選択されていると出品できない' do
         @item.shipping_date_id = 1
         @item.valid?
         expect(@item.errors[:shipping_date_id]).to include("can't be blank")
