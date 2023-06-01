@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   before_action :authorize_user, only: [:edit, :update]
   before_action :set_item, only: [:edit, :update, :show]
 
-
   def index
     @items = Item.order('created_at DESC')
   end
