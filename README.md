@@ -60,11 +60,11 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | purchase      | references | null: false,foreign_key: true  |
-| building_name | string     |                                |
-| address_line  | string     | null: false                    |
-| city          | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
 | postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| building_name | string     |                                |
+| house_number  | string     | null: false                    |
 | telephone     | string     | null: false                    |
 
 # Association
