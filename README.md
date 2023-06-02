@@ -51,12 +51,11 @@
 
  - belongs_to :item
  - belongs_to :user
- - has_one :purchase_information
+ - has_one :address
 
 
 
-
-# purchase_informationｓ テーブル
+# address テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
