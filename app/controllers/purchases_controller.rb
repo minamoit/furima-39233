@@ -7,18 +7,25 @@ class PurchasesController < ApplicationController
   end
 
   def new
-    @purchase = Purchase.new
+    @item = Item.find(params[:item_id])
+    @purchase_address = PurchaseAddress.new
   end
 
   def create
-    @purchase = Purchase.new(set_params)
-    if @purchase.valid?
-      @purchase.save
+    @purchase_address = PurchaseAddress.new(purchase_params)
+    if @purchase_address.valid?
+      @purchase_address.save
+      redirect_to root_path
+    else
+      render :new
     end
   end
 
   private
-  def set_params
-    params.permit(:item_id, :user_id)
+  def purchase_params
+    params.require(:purchase_address).permit(:postal_code, :shipping_origin_id, :city, :house_number, :building_name,
+                                             :telephone).merge(user_id: current_user.id)
+
   end
+
 end
