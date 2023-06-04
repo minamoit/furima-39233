@@ -31,6 +31,8 @@
   <% else %>
     <%= link_to "購入画面に進む", new_item_purchase_path(@item),class:"item-red-btn"%>
     <% end %>
+  <% else %>
+    <%= link_to "トップページに戻る", root_path, class: "item-red-btn" %>
   <% end %>
 
     <div class="item-explain-box">

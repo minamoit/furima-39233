@@ -7,5 +7,5 @@ class Address < ApplicationRecord
   validates :house_number, presence: { message: "can't be blank" }
   validates :telephone, length: { in: 10..11 }, numericality: { only_integer: true }
 
-  belongs_to :purchase
+  has_one :purchase
 end

@@ -8,7 +8,11 @@ class PurchasesController < ApplicationController
 
   def new
     @item = Item.find(params[:item_id])
-    @purchase_address = PurchaseAddress.new
+    if current_user == @item.user
+      redirect_to root_path, alert: "You cannot access this page."
+    else
+      @purchase_address = PurchaseAddress.new
+    end
   end
 
   def create
@@ -26,7 +30,6 @@ class PurchasesController < ApplicationController
   def purchase_params
     params.require(:purchase_address).permit(:postal_code, :shipping_origin_id, :city, :house_number, :building_name,
                                              :telephone).merge(user_id: current_user.id)
-
   end
 
 end
