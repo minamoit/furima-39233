@@ -26,7 +26,9 @@ class Item < ApplicationRecord
                     format: { without: /\./, message: 'cannot be a decimal value' }
 
   has_one_attached :image
-
   belongs_to :user
-  has_one :purchase
+  has_many   :purchases
+
+
+
 end
