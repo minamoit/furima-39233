@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :hoge, :item_id, :postal_code, :shipping_origin_id, :city, :house_number, :building_name, :telephone, :user_id
+  attr_accessor :card-cvc, :hoge, :item_id, :postal_code, :shipping_origin_id, :city, :house_number, :building_name, :telephone, :user_id
 
   with_options presence: true do
     validates :postal_code, presence: { message: "can't be blank" },

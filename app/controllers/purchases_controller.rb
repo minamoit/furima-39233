@@ -29,7 +29,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase_address).permit(:postal_code, :shipping_origin_id, :city, :house_number, :building_name,
+    params.require(:purchase_address).permit(:card-cvc, :postal_code, :shipping_origin_id, :city, :house_number, :building_name,
                                              :telephone, :hoge).merge(user_id: current_user.id)
   end
 end
