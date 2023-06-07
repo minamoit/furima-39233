@@ -51,22 +51,21 @@
 
  - belongs_to :item
  - belongs_to :user
- - has_one :purchase_information
+ - has_one :address
 
 
 
+# address テーブル
 
-# purchase_informationｓ テーブル
-
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| purchase      | references | null: false,foreign_key: true  |
-| building_name | string     |                                |
-| address_line  | string     | null: false                    |
-| city          | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
-| postal_code   | string     | null: false                    |
-| telephone     | string     | null: false                    |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| purchase           | references | null: false,foreign_key: true  |
+| postal_code        | string     | null: false                    |
+| shipping_origin_id | integer    | null: false                    |
+| city               | string     | null: false                    |
+| building_name      | string     |                                |
+| house_number       | string     | null: false                    |
+| telephone          | string     | null: false                    |
 
 # Association
 

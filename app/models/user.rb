@@ -14,9 +14,8 @@ class User < ApplicationRecord
                              format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :birth_day, presence: { message: "can\'t be blank" }
 
-  # 出品機能時に実装
   has_many :items
-  # has_many :purchases
+  has_many :purchases
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
