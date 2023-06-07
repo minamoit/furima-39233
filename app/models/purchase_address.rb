@@ -9,8 +9,8 @@ class PurchaseAddress
     validates :city, presence: { message: "can't be blank" }
     validates :house_number, presence: { message: "can't be blank" }
     validates :telephone, length: { in: 10..11 }, numericality: { only_integer: true }
-    validates :user_id, presence: true
-    validates :item_id, presence: true
+    validates :user_id
+    validates :item_id
     validates :token, presence: { message: "can't be blank" }
   end
 

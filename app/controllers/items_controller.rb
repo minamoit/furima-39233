@@ -24,10 +24,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @purchase = @item.purchase 
+    @purchase = @item.purchase
     if @item.purchase.nil?
     else
-    redirect_to root_path
+      redirect_to root_path
     end
   end
 

@@ -1,23 +1,9 @@
 class PurchasesController < ApplicationController
-  before_action :set_item, only: [:index, :new, :create]
+  before_action :set_item, only: [:index, :create]
   before_action :authenticate_user!, except: :index
 
   def index
     @purchase = Purchase.new # 空のPurchaseオブジェクトを作成する
-  end
-
-  def new
-    if current_user == @item.user
-      redirect_to root_path, alert: 'You cannot access this page.'
-      return
-    end
-
-    if @item.purchase.present?
-      redirect_to root_path
-      return
-    end
-
-    @purchase_address = PurchaseAddress.new
   end
 
   def create
@@ -27,7 +13,7 @@ class PurchasesController < ApplicationController
       @purchase_address.save
       redirect_to root_path
     else
-      render :new
+      render :index
     end
   end
 
