@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :items do
     resources :purchases, only: [:index, :new, :create, :update]
   end
+  
 end

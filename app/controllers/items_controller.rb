@@ -24,9 +24,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return unless @item.purchases.nil?
-
+    @purchase = @item.purchase 
+    if @item.purchase.nil?
+    else
     redirect_to root_path
+    end
   end
 
   def update
