@@ -4,6 +4,17 @@ class PurchasesController < ApplicationController
 
   def index
     @purchase = Purchase.new # 空のPurchaseオブジェクトを作成する
+    if current_user == @item.user
+      redirect_to root_path
+      return
+    end
+
+    if @item.purchase.present?
+      redirect_to root_path
+      return
+    end
+    
+    @purchase_address = PurchaseAddress.new
   end
 
   def create
