@@ -27,5 +27,5 @@ class Item < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
-  has_one :purchases
+  has_many :purchases
 end

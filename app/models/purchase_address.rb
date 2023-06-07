@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :card-cvc, :hoge, :item_id, :postal_code, :shipping_origin_id, :city, :house_number, :building_name, :telephone, :user_id
+  attr_accessor  :item_id, :postal_code, :shipping_origin_id, :city, :house_number, :building_name, :telephone, :user_id, :token
 
   with_options presence: true do
     validates :postal_code, presence: { message: "can't be blank" },
@@ -11,6 +11,7 @@ class PurchaseAddress
     validates :telephone, length: { in: 10..11 }, numericality: { only_integer: true }
     validates :user_id, presence: true
     validates :item_id, presence: true
+    validates :token, presence: { message: "can't be blank" }
   end
 
   def save

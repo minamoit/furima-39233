@@ -33,6 +33,8 @@
 
     <%= form_with id: 'charge-form',model: @purchase_address, url: item_purchases_path, class: 'transaction-form-wrap',local: true do |f| %>
     <%# カード情報の入力 %>
+          <%= render 'shared/error_messages', model: @purchase_address %>
+
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
@@ -56,11 +58,7 @@
           <span class="indispensable">必須</span>
         </div>
         <div class='input-expiration-date-wrap'>
-          <div id="card_expiry" class="input-expiration-date" ></div>
-
-          <%#= f.text_area :hoge, class:"input-expiration-date", id:"card-exp-month", placeholder:"例)3" %>
-          <%#= f.text_area :hoge, class:"input-expiration-date", id:"card-exp-year", placeholder:"例)23" %>
-
+          <div id="card_expiry" class="input-default" ></div>
         </div>
       </div>
       <div class="form-group">
