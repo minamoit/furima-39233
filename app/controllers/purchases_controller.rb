@@ -9,9 +9,15 @@ class PurchasesController < ApplicationController
   def new
     if current_user == @item.user
       redirect_to root_path, alert: 'You cannot access this page.'
-    else
-      @purchase_address = PurchaseAddress.new
+      return
     end
+
+    if @item.purchase.present?
+      redirect_to root_path
+      return
+    end
+
+    @purchase_address = PurchaseAddress.new
   end
 
   def create
