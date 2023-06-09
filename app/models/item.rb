@@ -8,6 +8,7 @@ class Item < ApplicationRecord
 
   validates :image, presence: { message: 'を入力してください' }
 
+  validates :user, presence: { message: 'Userを入力してください' }
   validates :item_name, presence: true,
                         length: { maximum: 40, message: '40字以上は入力できません' }
   validates :description, presence: true,
@@ -22,8 +23,6 @@ class Item < ApplicationRecord
                                     less_than_or_equal_to: 9_999_999,
                                     only_integer: true,
                                     message: 'は半角数値で入力してください' }
-
-  validates :price, presence: { message: 'を入力してください' }
 
   validate :price_range
 

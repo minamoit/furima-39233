@@ -63,7 +63,7 @@ RSpec.describe Item, type: :model do
       it 'userが紐付いていなければ出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors[:user]).to include('Userを入力してください')
+        expect(@item.errors[:user].first).to eq('Userを入力してください')
       end
       it 'categotyに「---」が選択されていると出品できない' do
         @item.category_id = 1

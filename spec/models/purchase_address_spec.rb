@@ -67,7 +67,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it '電話番号が半角数値でないと購入できないこと' do
         @purchase_address.telephone = '０9012341234'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('電話番号は数値で入力してください')
+        expect(@purchase_address.errors[:telephone]).to include('電話番号は数値で入力してください')
       end
       it 'user_idが紐づいていなければ購入できないこと' do
         @purchase_address.user_id = nil
